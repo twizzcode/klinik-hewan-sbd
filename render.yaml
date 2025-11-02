@@ -1,0 +1,37 @@
+# Ini adalah resep untuk Render.com
+services:
+  # 1. Database MySQL
+  - type: pserv
+    name: klinik-db
+    runtime: mysql
+    version: '8.0'
+    # Render akan otomatis membuat user, password, dan nama DB
+
+  # 2. Web Server (PHP/Apache)
+  - type: web
+    name: klinik-web
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    # Kita perlu memberi tahu PHP cara terhubung ke DB
+    # Render akan otomatis mengambil info dari 'klinik-db' di atas
+    envVars:
+      - key: DB_HOST
+        fromService:
+          type: pserv
+          name: klinik-db
+          property: host
+      - key: DB_USER
+        fromService:
+          type: pserv
+          name: klinik-db
+          property: user
+      - key: DB_PASSWORD
+        fromService:
+          type: pserv
+          name: klinik-db
+          property: password
+      - key: DB_NAME
+        fromService:
+          type: pserv
+          name: klinik-db
+          property: database
