@@ -57,8 +57,8 @@ services:
       # MOUNT SERTIFIKAT LANGSUNG (SANGAT PENTING!)
       # Menghubungkan file sertifikat dari Host (Certbot) ke Container (Nginx)
       # ==========================================================
-      - /etc/letsencrypt/live/twizzcode.my.id/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
-      - /etc/letsencrypt/live/twizzcode.my.id/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
+      - /etc/letsencrypt/live/twizzcode.my.id-0001/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
+      - /etc/letsencrypt/live/twizzcode.my.id-0001/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
     depends_on:
       - web 
 
