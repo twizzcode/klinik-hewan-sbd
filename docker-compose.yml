@@ -48,8 +48,7 @@ services:
     volumes:
       # Mount file konfigurasi Nginx yang baru kita buat
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - /etc/letsencrypt/live/twizzcode.my.id/fullchain.pem:/etc/nginx/ssl/fullchain.pem:ro
-      - /etc/letsencrypt/live/twizzcode.my.id/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
+
     depends_on:
       - web # Nginx baru berjalan setelah web container siap
 
